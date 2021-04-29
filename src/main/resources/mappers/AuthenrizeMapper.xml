@@ -1,0 +1,14 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hq.springboot01.mapper.AuthenrizeMapper">
+
+    <select id="getAuthenrizeByRoleId" parameterType="long" resultType="com.hq.springboot01.pojo.Authenrize">
+        select au.authenrizeId,au.authenrizeName,decode(au.ENABLE,'Y','true','false') enable from ROLE_AUTHENRIZE t
+        left join AUTHENRIZE au on t.AUTHENRIZEID=au.AUTHENRIZEID
+        where t.ROLEID=#{roleId}
+
+    </select>
+
+</mapper>

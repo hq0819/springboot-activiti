@@ -1,0 +1,13 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hq.springboot01.mapper.RoleMapper">
+
+    <select id="getRoleByUserName" parameterType="String" resultType="com.hq.springboot01.pojo.Role">
+       select tt.ROLEID,tt.ROLENAME,decode(tt.ENABLE,'Y','true','false') from USER_ROLE t
+        left join role tt on t.ROLEID=tt.ROLEID
+        where t.USERNAME=#{username}
+    </select>
+
+</mapper>

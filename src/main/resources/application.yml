@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:HEQIN
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: HEQIN
+    password: heqin
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+      additional-exclude: WEB-INF/**
+
+    add-properties:activiti: false
+    db-history-used: true
+
+
+  quartz:
+    job-store-type: jdbc
+    scheduler-name: hq001
+    auto-startup: true
+
+
+
+logging:
+  level:
+    com.hq.springboot01.mapper.*: debug
+
+
+mybatis:
+  mapper-locations: classpath:mappers/*.xml
+
+
+
+

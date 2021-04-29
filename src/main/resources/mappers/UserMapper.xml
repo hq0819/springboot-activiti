@@ -1,0 +1,16 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hq.springboot01.mapper.UserMapper">
+
+    <select id="getUser" parameterType="String" resultType="com.hq.springboot01.pojo.User">
+        select username,password,groupname,
+               decode(accountNonExpired,'Y','true','false') accountNonExpired,
+               decode(accountNonLocked,'Y','true','false') accountNonLocked,
+               decode(credentialsNonExpired,'Y','true','false') credentialsNonExpired,
+               decode(enabled,'Y','true','false') enabled
+            from users where username=#{username}
+    </select>
+
+</mapper>

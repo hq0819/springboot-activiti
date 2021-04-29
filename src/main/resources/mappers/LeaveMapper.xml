@@ -1,0 +1,24 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hq.springboot01.mapper.LeaveMapper">
+
+    <select id="queryLeave" parameterType="com.hq.springboot01.pojo.Leave" resultType="com.hq.springboot01.pojo.Leave">
+        select * from leave
+    </select>
+
+    <select id="queryLeaveById" parameterType="long" resultType="com.hq.springboot01.pojo.Leave">
+        select * from leave t where t.LEAVEID=#{leaveId}
+    </select>
+
+    <insert id="insertLeave" parameterType="com.hq.springboot01.pojo.Leave">
+        insert into leave(leaveid, leavename, leavedays, leavereason, leavetime) VALUES
+        (#{leaveId},#{leaveName},#{leavedays},#{leavereason},#{leavetime})
+    </insert>
+
+    <select id="getLeaveId" resultType="long">
+        select leave_seq.nextval leaveId from dual
+    </select>
+
+</mapper>
